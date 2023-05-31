@@ -7,6 +7,7 @@ class Logo extends Phaser.Scene {
         this.load.image("logo", "logo.png");
     }
     create() {
+        // create method
         this.cameras.main.setBackgroundColor(0x000000);
         this.cameras.main.fadeIn(500, 0, 0, 0);
 
