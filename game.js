@@ -3,12 +3,16 @@ class Logo extends Phaser.Scene {
         super('logo')
     }
     preload() {
+        // load path use assets/
         this.load.path = "./assets/";
         this.load.image("logo", "logo.png");
     }
     create() {
         // create method
+        // set background color
         this.cameras.main.setBackgroundColor(0x000000);
+        
+        // animation effects
         this.cameras.main.fadeIn(500, 0, 0, 0);
 
         let logo = this.add.image(
@@ -63,9 +67,13 @@ class Main extends Phaser.Scene {
         super("main");
     }
     preload() {
+        // assets path
         this.load.path = "./assets/";
+        // add background picture
         this.load.image("bg", "bg.jpg");
+        // add player picture
         this.load.image("player", "player.png");
+        // add enemy.png picture
         this.load.image("enemy", "enemy.png");
     }
     create() {
@@ -83,6 +91,7 @@ class Main extends Phaser.Scene {
         this.player.setAngle(270);
         this.playerRect = new Phaser.Geom.Rectangle(0, 0, this.player.height, this.player.width);
 
+        // set bounds
         this.matter.world.setBounds(0, 0, game.canvas.width, game.canvas.height);
         this.cursors = this.input.keyboard.createCursorKeys();
 
@@ -116,6 +125,7 @@ class Main extends Phaser.Scene {
 
         this.missileArray = []
         let counter = 1;
+        // add event 
         this.time.addEvent({
             delay: 2000,
             loop: true,
@@ -125,6 +135,7 @@ class Main extends Phaser.Scene {
                 const angle = 2 * Math.PI * side / 360;
 
                 const old = this.missileArray.find(m => m.visible === false);;
+                // check if the aircraft has collided
                 if (!old)
                     this.missileArray.push(this.fireMissile(400 + 500 * Math.cos(angle), 300 + 500 * Math.sin(angle), angle, counter++));
                 else {
@@ -250,6 +261,7 @@ class Outro extends Phaser.Scene {
 }
 
 
+// construct method 
 const game = new Phaser.Game({
     type: Phaser.AUTO,
     width: 800,
