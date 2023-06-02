@@ -46,3 +46,20 @@ class Logo extends Phaser.Scene {
         // }, 7000);
     }
 }
+
+class Rule extends Phaser.Scene {
+    constructor() {
+        super('rule');
+    }
+    preload() {
+        this.load.path = "./assets/";
+        this.load.image("rule", "rule.png");
+    }
+    create() {
+        this.add.image(game.canvas.width / 2, game.canvas.height / 2, "rule").setDisplaySize(game.canvas.width, game.canvas.height);
+
+        this.input.on('pointerdown', () => {
+            this.scene.start('main', { level: 1 })
+        });
+    }
+}
