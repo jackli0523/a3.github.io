@@ -262,3 +262,27 @@ class Outro extends Phaser.Scene {
     }
 }
 
+
+// construct method 
+const game = new Phaser.Game({
+    type: Phaser.AUTO,
+    width: 800,
+    height: 600,
+    backgroundColor: '#1b1464',
+    parent: 'phaser-example',
+    physics: {
+        default: 'matter',
+        matter: {
+            gravity: {
+                x: 0,
+                y: 0
+            },
+            // debug: true
+        }
+    },
+    // scene: [Main, Outro],
+    scene: [Logo, Rule, Main, Hint1, Hint2, Outro],
+    title: "Physics Game",
+});
+
+
