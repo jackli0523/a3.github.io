@@ -212,3 +212,53 @@ class Main extends Phaser.Scene {
         })
     }
 }
+
+class Hint1 extends Phaser.Scene {
+    constructor() {
+        super('hint1');
+    }
+    preload() {
+        this.load.path = "./assets/";
+        this.load.image("hint1", "hint1.png");
+    }
+    create() {
+        this.add.image(game.canvas.width / 2, game.canvas.height / 2, "hint1").setDisplaySize(game.canvas.width, game.canvas.height);
+
+        this.input.on('pointerdown', () => {
+            this.scene.start('main', { level: 2 });
+        });
+    }
+}
+class Hint2 extends Phaser.Scene {
+    constructor() {
+        super('hint2');
+    }
+    preload() {
+        this.load.path = "./assets/";
+        this.load.image("hint2", "hint2.png");
+    }
+    create() {
+        this.add.image(game.canvas.width / 2, game.canvas.height / 2, "hint2").setDisplaySize(game.canvas.width, game.canvas.height);
+
+        this.input.on('pointerdown', () => {
+            this.scene.start('main', { level: 3 });
+        });
+    }
+}
+
+
+class Outro extends Phaser.Scene {
+    constructor() {
+        super('outro');
+    }
+    preload() {
+        this.load.path = "./assets/";
+        this.load.image("win", "win.png");
+    }
+    create() {
+        this.cameras.main.setBackgroundColor(0x000000);
+        let win = this.add.image(game.canvas.width / 2, game.canvas.height / 2, "win");
+        win.setDisplaySize(game.canvas.width / 2, game.canvas.height / 2);
+    }
+}
+
